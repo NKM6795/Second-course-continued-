@@ -1,0 +1,22 @@
+User - user
+Internet user - user who is not logged in
+Login -	login or sign up
+Post tweets - post tweets
+Search on words - search on words
+Search for people - search for people
+Read Tweets - read Tweets
+View trending topics - view trending topics
+Logout - logout
+Followers - people who follow you
+Following - people you follow
+Twitter members - twitter members
+Home - home page
+Start page - start page when entering twitter
+Information about Twitter - information about Twitter which depends on the button you clicked
+Common - there is access to any of these activities
+Find - search on words or search for people
+Profile - my profile
+Page with user - someone's profile(not my)
+Page with tweet - read tweet
+Write a tweet - write a tweet, then post it
+Chat - chat with other user
