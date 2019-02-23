@@ -7,3 +7,6 @@ DrawBoard - graphic elements for drawing boards and figures
 Cell - cell with figure
 Figure - figure
 ColorFigures - figure color
+User - user
+Choose a figure - select a figure if the user's move
+Make a move - make a move among of the displayed

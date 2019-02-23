@@ -1,6 +1,6 @@
 User - user
 Internet user - user who is not logged in
-Login -	login or sign up
+Login -	log in or sign up
 Post tweets - post tweets
 Search on words - search on words
 Search for people - search for people
