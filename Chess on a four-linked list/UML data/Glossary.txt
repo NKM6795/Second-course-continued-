@@ -10,3 +10,6 @@ ColorFigures - figure color
 User - user
 Choose a figure - select a figure if the user's move
 Make a move - make a move among of the displayed
+Start - open program
+Your turn - your turn
+Opponent's turn - opponent's turn
