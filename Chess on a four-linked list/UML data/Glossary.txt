@@ -13,3 +13,5 @@ Make a move - make a move among of the displayed
 Start - open program
 Your turn - your turn
 Opponent's turn - opponent's turn
+Waiting for a figure selection - waiting for user to select a figure depending on color
+Identifying possible moves - identifying possible moves
