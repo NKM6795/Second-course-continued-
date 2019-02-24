@@ -20,3 +20,11 @@ Page with user - someone's profile(not my)
 Page with tweet - read tweet
 Write a tweet - write a tweet, then post it
 Chat - chat with other user
+Tweet - post with some information
+Comment - comment on tweet or other comment
+List - user group
+Moment - tweet group
+Notification - notification(someone liked a someone else, someone followed someone else, recent Tweet from someone)
+Message - some text and, maaybe, some file
+Search - search by text, hashtag or username
+Chat - chat between users
