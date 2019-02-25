@@ -28,3 +28,5 @@ Notification - notification(someone liked a someone else, someone followed someo
 Message - some text and, maaybe, some file
 Search - search by text, hashtag or username
 Chat - chat between users
+Distributor - determines which server to send the request
+Other users - users from follower list
