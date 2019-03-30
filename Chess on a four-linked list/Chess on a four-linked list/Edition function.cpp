@@ -4,23 +4,7 @@ void game(RenderWindow &window, RenderTexture &textureForWindow, int heightOfThe
 {
 	ifstream fileIn("Date/Date for game.dat");
 
-	int countOfButtons;
-	fileIn >> countOfButtons;
-
-	Button *buttonsForGame = new Button[countOfButtons];
-
-	for (int i = 0; i < countOfButtons; ++i)
-	{
-		int x, y, timerForPointing, timerForPressing;
-		fileIn >> x >> y >> timerForPointing >> timerForPressing;
-		buttonsForGame[i].setInformation(x, y, string("Update"));
-		buttonsForGame[i].setMaxTimerForPressing(timerForPressing);
-		buttonsForGame[i].setMaxTimerForPointing(timerForPointing);
-	}
-
-
 	string addressOfbackground;
-	getline(fileIn, addressOfbackground);
 	getline(fileIn, addressOfbackground);
 
 	Texture backgroundTexture;
@@ -49,11 +33,6 @@ void game(RenderWindow &window, RenderTexture &textureForWindow, int heightOfThe
 					window.close();
 			}
 
-			for (int i = 0; i < countOfButtons; ++i)
-			{
-				buttonsForGame[i].workWithButton(mousePosition, Mouse::isButtonPressed(Mouse::Left));
-			}
-
 
 			temp.work(mousePosition, Mouse::isButtonPressed(Mouse::Left), sizeOfCell);
 
@@ -64,11 +43,7 @@ void game(RenderWindow &window, RenderTexture &textureForWindow, int heightOfThe
 
 				temp.draw(textureForWindow, heightOfTheScrean, widthOfTheScrean, sizeOfCell);
 
-				for (int i = 0; i < countOfButtons; ++i)
-				{
-					buttonsForGame[i].drawButton(textureForWindow);
-				}
-
+		
 				drawWindow(window, textureForWindow);
 				timerForDrawingObject.restart();
 			}
