@@ -83,7 +83,7 @@ TEST(WorkWithElements, correctElement)
 	}
 
 	//arrange
-	SinglyNode *node = list.getHead();
+	shared_ptr<SinglyNode> node = list.getHead();
 
 	//assert
 	for (int i = 0; i < 100; ++i, node = node->next)

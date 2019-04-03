@@ -1,12 +1,10 @@
 #include "SinglyLinked.h"
 
 
-SinglyNode::SinglyNode(int iForStruct, int jForStruct)
+SinglyNode::SinglyNode(int i, int j) : i(i), j(j)
 {
-	i = iForStruct;
-	j = jForStruct;
-}
 
+}
 
 
 SinglyLinked::SinglyLinked()
@@ -14,9 +12,11 @@ SinglyLinked::SinglyLinked()
 	length = 0;
 }
 
+
 void SinglyLinked::pushBack(int i, int j)
 {
-	SinglyNode *newNode = new SinglyNode(i, j);
+	shared_ptr<SinglyNode> newNode = make_shared<SinglyNode>(i, j);
+
 	if (length == 0)
 	{
 		head = newNode;
@@ -30,16 +30,19 @@ void SinglyLinked::pushBack(int i, int j)
 	++length;
 }
 
+
 void SinglyLinked::popFront()
 {
 	if (length != 0)
 	{
-		SinglyNode *node = head;
+		shared_ptr<SinglyNode> node = head;
 		head = head->next;
-		delete node;
+		node.reset();
+
 		--length;
 	}
 }
+
 
 void SinglyLinked::clear()
 {
@@ -49,12 +52,14 @@ void SinglyLinked::clear()
 	}
 }
 
+
 int SinglyLinked::getSize()
 {
 	return length;
 }
 
-SinglyNode *SinglyLinked::getHead()
+
+shared_ptr<SinglyNode> SinglyLinked::getHead()
 {
 	return head;
 }

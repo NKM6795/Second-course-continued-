@@ -29,6 +29,6 @@ public:
 	bool change;
 	
 	void setInformation(int sizeOfBoardForClass, int offsetForClass);
-	void draw(RenderTexture &textureForWindow, int heightOfTheScrean, int widthOfTheScrean, int sizeOfCell, Cell *head, Vector2i allotment, SinglyNode *headForFreeCell, int lengthForFreeCell, SinglyNode *headForEnemy, int lengthForEnemy, int turn);
+	void draw(RenderTexture &textureForWindow, int heightOfTheScrean, int widthOfTheScrean, int sizeOfCell, Cell *head, Vector2i allotment, shared_ptr<SinglyNode> headForFreeCell, int lengthForFreeCell, shared_ptr<SinglyNode> headForEnemy, int lengthForEnemy, int turn);
 
 };

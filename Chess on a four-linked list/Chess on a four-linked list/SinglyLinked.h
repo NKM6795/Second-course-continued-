@@ -1,20 +1,30 @@
 #pragma once
 
 
+#include <memory>
+
+
+using std::shared_ptr;
+using std::make_shared;
+
+
 struct SinglyNode
 {
 	int i;
 	int j;
-	SinglyNode *next = nullptr;
-	SinglyNode(int iForStruct, int jForStruct);
+
+	shared_ptr<SinglyNode> next;
+	
+	SinglyNode(int i, int j);
 };
 
 
 class SinglyLinked
 {
 private:
-	SinglyNode *head = nullptr;
-	SinglyNode *tail = nullptr;
+	shared_ptr<SinglyNode> head;
+	shared_ptr<SinglyNode> tail;
+
 	int length;
 
 public:
@@ -23,5 +33,5 @@ public:
 	void popFront();
 	void clear();
 	int getSize();
-	SinglyNode *getHead();
+	shared_ptr<SinglyNode> getHead();
 };
