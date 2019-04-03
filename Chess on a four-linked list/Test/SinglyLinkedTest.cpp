@@ -2,7 +2,7 @@
 #include "../Chess on a four-linked list/SinglyLinked.h"
 
 
-TEST(WorkWithElements, PushBackElements)
+TEST(SinglyLinkedTest, PushBackElements)
 {
 	//arrange
 	SinglyLinked<int> list;
@@ -18,7 +18,7 @@ TEST(WorkWithElements, PushBackElements)
 }
 
 
-TEST(WorkWithElements, PopFrontElements)
+TEST(SinglyLinkedTest, PopFrontElements)
 {
 	//arrange
 	SinglyLinked<int> list;
@@ -46,7 +46,7 @@ TEST(WorkWithElements, PopFrontElements)
 }
 
 
-TEST(WorkWithElements, clearList)
+TEST(SinglyLinkedTest, clearList)
 {
 	//arrange
 	SinglyLinked<int> list;
@@ -71,7 +71,7 @@ TEST(WorkWithElements, clearList)
 }
 
 
-TEST(WorkWithElements, correctElement)
+TEST(SinglyLinkedTest, correctElement)
 {
 	//arrange
 	SinglyLinked<int> list;
