@@ -18,6 +18,8 @@ shared_ptr<Cell> Board::getCell(int i, int j)
 
 void Board::setInformation(int sizeOfBoardForClass, int offsetForClass, string addressOfBeginingPosition)
 {
+	change = false;
+
 	turn = ColorFigures::White;
 	moveThroughOne = -1;
 	keyIsPressed = false;
@@ -80,14 +82,12 @@ void Board::setInformation(int sizeOfBoardForClass, int offsetForClass, string a
 		}
 		beginOfLine = beginOfLine->down;
 	}
-
-	drawBoard.setInformation(sizeOfBoard, offset);
 }
 
 
 void Board::work(Vector2int mousePosition, bool isPressed, int sizeOfCell)
 {
-	if (!drawBoard.change)
+	if (!change)
 	{
 		if (isPressed)
 		{
@@ -169,7 +169,7 @@ void Board::work(Vector2int mousePosition, bool isPressed, int sizeOfCell)
 						}
 						if (second->position.x == sizeOfBoard - 1 || second->position.x == 0)
 						{
-							drawBoard.change = true;
+							change = true;
 						}
 					}
 					else if (first->figure == Figure::King)
@@ -249,7 +249,7 @@ void Board::work(Vector2int mousePosition, bool isPressed, int sizeOfCell)
 				}
 				beginOfLine = beginOfLine->down;
 			}
-			drawBoard.change = false;
+			change = false;
 		}
 	}
 }
@@ -270,7 +270,7 @@ shared_ptr<Cell> Board::getHead()
 	return head;
 }
 
-Vector2i Board::getAllotment()
+Vector2int Board::getAllotment()
 {
 	return allotment;
 }
@@ -283,10 +283,4 @@ SinglyLinked<Cell> Board::getFreeCellList()
 SinglyLinked<Cell> Board::getEnemyList()
 {
 	return enemy;
-}
-
-
-void Board::draw(RenderTexture &textureForWindow, int heightOfTheScrean, int widthOfTheScrean, int sizeOfCell)
-{
-	drawBoard.draw(textureForWindow, heightOfTheScrean, widthOfTheScrean, sizeOfCell, head, allotment, freeCell.getHead(), freeCell.getSize(), enemy.getHead(), enemy.getSize(), turn);
 }

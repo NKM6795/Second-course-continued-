@@ -17,9 +17,6 @@
     <ClCompile Include="Board.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Edition function.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="FiguresMoving.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -32,15 +29,15 @@
     <ClCompile Include="Graphic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasicElement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Board.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Edition function.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FiguresMoving.h">
@@ -53,6 +50,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Graphic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

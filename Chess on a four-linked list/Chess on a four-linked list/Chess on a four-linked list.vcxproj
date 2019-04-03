@@ -118,7 +118,7 @@
     <ClCompile Include="BasicElement.cpp" />
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="DrawBoard.cpp" />
-    <ClCompile Include="Edition function.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="FiguresMoving.cpp" />
     <ClCompile Include="Graphic.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -127,7 +127,7 @@
     <ClInclude Include="BasicElement.h" />
     <ClInclude Include="Board.h" />
     <ClInclude Include="DrawBoard.h" />
-    <ClInclude Include="Edition function.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="FiguresMoving.h" />
     <ClInclude Include="Graphic.h" />
     <ClInclude Include="SinglyLinked.h" />

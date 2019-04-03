@@ -1,26 +1,32 @@
-#include "Edition function.h"
+#include "Game.h"
 
-void game(int heightOfTheScrean, int widthOfTheScrean, int timeForWorkProgram, int timeForFPS, int sizeOfCell)
+
+void game()
 {
+	int screanWidth, screanHeight, sizeOfCell, timeForWorkProgram, timeForFPS;
+	
 	ifstream fileIn("Date/Date for game.dat");
+
+	fileIn >> screanWidth >> screanHeight >> sizeOfCell >> timeForWorkProgram >> timeForFPS;
 
 	string addressOfbackground;
 	getline(fileIn, addressOfbackground);
+	getline(fileIn, addressOfbackground);
 
 
-	Graphic graphic(widthOfTheScrean, heightOfTheScrean);
+	Graphic graphic(screanWidth, screanHeight);
 
-	graphic.setInformation(widthOfTheScrean / 2, heightOfTheScrean / 2, widthOfTheScrean, heightOfTheScrean, addressOfbackground);
+	graphic.setInformation(screanWidth / 2, screanHeight / 2, screanWidth, screanHeight, addressOfbackground);
 
 	Vector2int mousePosition;
 
 	long timerForWorkProgram = 0,
 		timerForFPS = 0;
 
-	Board temp;
-	temp.setInformation(8, 25, string("Date/Date for board.dat"));
+	Board board;
+	board.setInformation(8, 25, string("Date/Date for board.dat"));
 
-	graphic.setInformation(temp);
+	graphic.setInformation(board);
 
 	while (graphic.isOpen())
 	{
@@ -38,13 +44,13 @@ void game(int heightOfTheScrean, int widthOfTheScrean, int timeForWorkProgram, i
 				}
 			}
 
-			temp.work(mousePosition, Mouse::isButtonPressed(Mouse::Left), sizeOfCell);
+			board.work(mousePosition, Mouse::isButtonPressed(Mouse::Left), sizeOfCell);
 
 			if (graphic.getTimeAsMicroseconds() - timerForFPS >= timeForFPS)
 			{
 				timerForFPS += timeForFPS;
 
-				graphic.draw(temp, sizeOfCell);
+				graphic.draw(board, sizeOfCell);
 			}
 		}
 	}

@@ -99,5 +99,5 @@ Event Graphic::getEvent()
 
 Vector2int Graphic::getPositionOfMouse()
 {
-	return convert(Mouse::getPosition(*window));
+	return Vector2int(Mouse::getPosition(*window).x, Mouse::getPosition(*window).y);
 }

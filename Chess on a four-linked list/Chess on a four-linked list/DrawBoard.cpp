@@ -22,7 +22,7 @@ void DrawBoard::setInformation(int sizeOfBoardForClass, int offsetForClass)
 	changeSprite.setTexture(changeTexture);
 }
 
-void DrawBoard::draw(RenderTexture &textureForWindow, int heightOfTheScrean, int widthOfTheScrean, int sizeOfCell, shared_ptr<Cell> head, Vector2i allotment, shared_ptr<SinglyNode<Cell> > headForFreeCell, int lengthForFreeCell, shared_ptr<SinglyNode<Cell> > headForEnemy, int lengthForEnemy, int turn)
+void DrawBoard::draw(RenderTexture &textureForWindow, int heightOfTheScrean, int widthOfTheScrean, int sizeOfCell, shared_ptr<Cell> head, Vector2int allotment, shared_ptr<SinglyNode<Cell> > headForFreeCell, int lengthForFreeCell, shared_ptr<SinglyNode<Cell> > headForEnemy, int lengthForEnemy, int turn)
 {
 	shared_ptr<Cell> beginOfLine = head;
 	for (int i = 0; i < sizeOfBoard; ++i)
@@ -79,15 +79,4 @@ void DrawBoard::draw(RenderTexture &textureForWindow, int heightOfTheScrean, int
 		changeSprite.setOrigin(float(changeTexture.getSize().x / 2), float(changeTexture.getSize().y / 2));
 		textureForWindow.draw(changeSprite);
 	}
-}
-
-
-Vector2int convert(Vector2i value)
-{
-	return Vector2int(value.x, value.y);
-}
-
-Vector2i convert(Vector2int value)
-{
-	return Vector2i(value.x, value.y);
 }

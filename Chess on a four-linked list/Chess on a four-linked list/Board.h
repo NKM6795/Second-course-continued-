@@ -2,7 +2,7 @@
 
 
 #include <string>
-#include "DrawBoard.h"
+#include "FiguresMoving.h"
 
 
 using std::string;
@@ -12,12 +12,12 @@ using std::getline;
 class Board
 {
 private:
-	DrawBoard drawBoard;
+	bool change;
 
 	int offset;
 	int sizeOfBoard;
-	Vector2i allotment;
-	Vector2i allotmentPast;
+	Vector2int allotment;
+	Vector2int allotmentPast;
 	shared_ptr<Cell> head;
 
 	int moveThroughOne;
@@ -41,9 +41,7 @@ public:
 	int getSizeOfBoard();
 	int getOffset();
 	shared_ptr<Cell> getHead();
-	Vector2i getAllotment();
+	Vector2int getAllotment();
 	SinglyLinked<Cell> getFreeCellList();
 	SinglyLinked<Cell> getEnemyList();
-
-	void draw(RenderTexture &textureForWindow, int heightOfTheScrean, int widthOfTheScrean, int sizeOfCell);
 };
