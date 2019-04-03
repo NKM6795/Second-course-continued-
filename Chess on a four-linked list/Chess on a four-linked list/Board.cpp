@@ -159,11 +159,11 @@ void Board::work(Vector2i mousePosition, bool isPressed, int sizeOfCell)
 						{
 							if ((allotment.x - i == 1 && allotment.y - j == 1) || (allotment.x - i == 1 && allotment.y - j == -1))
 							{
-								figuresMoving.erase(first->left);
+								FiguresMoving::erase(first->left);
 							}
 							else if ((allotment.x - i == -1 && allotment.y - j == 1) || (allotment.x - i == -1 && allotment.y - j == -1))
 							{
-								figuresMoving.erase(first->right);
+								FiguresMoving::erase(first->right);
 							}
 						}
 						if (second->position.x == sizeOfBoard - 1 || second->position.x == 0)
@@ -176,11 +176,11 @@ void Board::work(Vector2i mousePosition, bool isPressed, int sizeOfCell)
 						first->firstUnique = false;
 						if (allotment.x - i == -2)
 						{
-							figuresMoving.goTo(first->right->right->right, first->right);
+							FiguresMoving::goTo(first->right->right->right, first->right);
 						}
 						if (allotment.x - i == 2)
 						{
-							figuresMoving.goTo(first->left->left->left->left, first->left);
+							FiguresMoving::goTo(first->left->left->left->left, first->left);
 						}
 					}
 					else if (first->figure == Figure::Rook)
@@ -188,7 +188,7 @@ void Board::work(Vector2i mousePosition, bool isPressed, int sizeOfCell)
 						first->firstUnique = false;
 					}
 
-					figuresMoving.goTo(first, second);
+					FiguresMoving::goTo(first, second);
 					allotment = { -1, -1 };
 					enemy.clear();
 					freeCell.clear();
@@ -224,7 +224,7 @@ void Board::work(Vector2i mousePosition, bool isPressed, int sizeOfCell)
 			freeCell.clear();
 			shared_ptr<Cell> cell = getCell(allotment.x, allotment.y);
 
-			figuresMoving.checkAllFunction(cell, freeCell, enemy);
+			FiguresMoving::checkAllFunction(cell, freeCell, enemy);
 
 			
 			figureIsAllotment = false;

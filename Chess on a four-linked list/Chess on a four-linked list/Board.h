@@ -13,7 +13,6 @@ class Board
 {
 private:
 	DrawBoard drawBoard;
-	FiguresMoving figuresMoving;
 
 	int offset;
 	int sizeOfBoard;
