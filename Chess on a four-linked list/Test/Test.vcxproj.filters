@@ -7,6 +7,7 @@
     <ClCompile Include="..\Chess on a four-linked list\BasicElement.cpp">
       <Filter>Data</Filter>
     </ClCompile>
+    <ClCompile Include="Vector2typeTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
