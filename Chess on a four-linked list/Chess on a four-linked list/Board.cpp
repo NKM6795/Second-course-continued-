@@ -84,7 +84,8 @@ void Board::setInformation(int sizeOfBoardForClass, int offsetForClass, string a
 	drawBoard.setInformation(sizeOfBoard, offset);
 }
 
-void Board::work(Vector2i mousePosition, bool isPressed, int sizeOfCell)
+
+void Board::work(Vector2int mousePosition, bool isPressed, int sizeOfCell)
 {
 	if (!drawBoard.change)
 	{
@@ -252,6 +253,38 @@ void Board::work(Vector2i mousePosition, bool isPressed, int sizeOfCell)
 		}
 	}
 }
+
+
+int Board::getSizeOfBoard()
+{
+	return sizeOfBoard;
+}
+
+int Board::getOffset()
+{
+	return offset;
+}
+
+shared_ptr<Cell> Board::getHead()
+{
+	return head;
+}
+
+Vector2i Board::getAllotment()
+{
+	return allotment;
+}
+
+SinglyLinked<Cell> Board::getFreeCellList()
+{
+	return freeCell;
+}
+
+SinglyLinked<Cell> Board::getEnemyList()
+{
+	return enemy;
+}
+
 
 void Board::draw(RenderTexture &textureForWindow, int heightOfTheScrean, int widthOfTheScrean, int sizeOfCell)
 {

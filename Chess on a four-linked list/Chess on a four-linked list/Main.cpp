@@ -8,12 +8,7 @@ int main()
 	fileInForStart >> widthOfTheScrean >> heightOfTheScrean >> sizeOfCell >> timeForWorkProgram >> timeForFPS;
 
 
-	RenderTexture textureForWindow;
-	RenderWindow window(VideoMode(widthOfTheScrean, heightOfTheScrean), "Beta chess", Style::None);
-
-	textureForWindow.create(widthOfTheScrean, heightOfTheScrean);
-
-	game(window, textureForWindow, heightOfTheScrean, widthOfTheScrean, timeForWorkProgram, timeForFPS, sizeOfCell);
+	game(heightOfTheScrean, widthOfTheScrean, timeForWorkProgram, timeForFPS, sizeOfCell);
 
 	return 0;
 }

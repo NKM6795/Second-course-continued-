@@ -33,7 +33,17 @@ private:
 
 public:
 	ColorFigures turn;
+
 	void setInformation(int sizeOfBoardForClass, int offsetForClass, string addressOfBeginingPosition);
-	void work(Vector2i mousePosition, bool isPressed, int sizeOfCell);
+
+	void work(Vector2int mousePosition, bool isPressed, int sizeOfCell);
+
+	int getSizeOfBoard();
+	int getOffset();
+	shared_ptr<Cell> getHead();
+	Vector2i getAllotment();
+	SinglyLinked<Cell> getFreeCellList();
+	SinglyLinked<Cell> getEnemyList();
+
 	void draw(RenderTexture &textureForWindow, int heightOfTheScrean, int widthOfTheScrean, int sizeOfCell);
 };

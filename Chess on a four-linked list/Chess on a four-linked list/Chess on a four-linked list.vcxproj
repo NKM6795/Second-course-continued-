@@ -120,6 +120,7 @@
     <ClCompile Include="DrawBoard.cpp" />
     <ClCompile Include="Edition function.cpp" />
     <ClCompile Include="FiguresMoving.cpp" />
+    <ClCompile Include="Graphic.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +129,7 @@
     <ClInclude Include="DrawBoard.h" />
     <ClInclude Include="Edition function.h" />
     <ClInclude Include="FiguresMoving.h" />
+    <ClInclude Include="Graphic.h" />
     <ClInclude Include="SinglyLinked.h" />
   </ItemGroup>
   <ItemGroup>
