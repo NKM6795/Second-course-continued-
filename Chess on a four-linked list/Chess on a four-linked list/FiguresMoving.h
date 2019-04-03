@@ -6,14 +6,14 @@
 class FiguresMoving
 {
 private:
-	void checkPosition(Cell *cell, Cell *beginCell, SinglyLinked &freeCell, SinglyLinked &enemy);
-	void checkPositionForKing(Cell *cell, SinglyLinked &freeCell, SinglyLinked &enemy);
-	void checkVertAndHoriz(Cell *cell, SinglyLinked &freeCell, SinglyLinked &enemy);
-	void checkDiagonal(Cell *cell, SinglyLinked &freeCell, SinglyLinked &enemy);
-	void checkPositionForKnight(Cell *cell, SinglyLinked &freeCell, SinglyLinked &enemy);
-	void checkPositionForPawn(Cell *cell, SinglyLinked &freeCell, SinglyLinked &enemy);
+	void checkPosition(Cell *cell, Cell *beginCell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy);
+	void checkPositionForKing(Cell *cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy);
+	void checkVertAndHoriz(Cell *cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy);
+	void checkDiagonal(Cell *cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy);
+	void checkPositionForKnight(Cell *cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy);
+	void checkPositionForPawn(Cell *cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy);
 public:
 	void erase(Cell *cell);
 	void goTo(Cell *firsCell, Cell *secondCell);
-	void checkAllFunction(Cell *cell, SinglyLinked &freeCell, SinglyLinked &enemy);
+	void checkAllFunction(Cell *cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy);
 };

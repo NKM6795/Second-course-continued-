@@ -122,10 +122,10 @@ void Board::work(Vector2i mousePosition, bool isPressed, int sizeOfCell)
 			{
 				bool check = false;
 
-				shared_ptr<SinglyNode> node = freeCell.getHead();
+				shared_ptr<SinglyNode<Cell> > node = freeCell.getHead();
 				for (int k = 0; k < freeCell.getSize(); ++k)
 				{
-					if (node->i == i && node->j == j)
+					if (node->data.position.y == i && node->data.position.x == j)
 					{
 						check = true;
 					}
@@ -134,7 +134,7 @@ void Board::work(Vector2i mousePosition, bool isPressed, int sizeOfCell)
 				node = enemy.getHead();
 				for (int k = 0; k < enemy.getSize(); ++k)
 				{
-					if (node->i == i && node->j == j)
+					if (node->data.position.y == i && node->data.position.x == j)
 					{
 						check = true;
 					}

@@ -2,9 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="..\Chess on a four-linked list\SinglyLinked.cpp">
-      <Filter>Data</Filter>
-    </ClCompile>
     <ClCompile Include="SinglyLinkedTest.cpp" />
   </ItemGroup>
   <ItemGroup>

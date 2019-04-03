@@ -22,7 +22,7 @@ void DrawBoard::setInformation(int sizeOfBoardForClass, int offsetForClass)
 	changeSprite.setTexture(changeTexture);
 }
 
-void DrawBoard::draw(RenderTexture &textureForWindow, int heightOfTheScrean, int widthOfTheScrean, int sizeOfCell, Cell *head, Vector2i allotment, shared_ptr<SinglyNode> headForFreeCell, int lengthForFreeCell, shared_ptr<SinglyNode> headForEnemy, int lengthForEnemy, int turn)
+void DrawBoard::draw(RenderTexture &textureForWindow, int heightOfTheScrean, int widthOfTheScrean, int sizeOfCell, Cell *head, Vector2i allotment, shared_ptr<SinglyNode<Cell> > headForFreeCell, int lengthForFreeCell, shared_ptr<SinglyNode<Cell> > headForEnemy, int lengthForEnemy, int turn)
 {
 	Cell *beginOfLine = head;
 	for (int i = 0; i < sizeOfBoard; ++i)
@@ -48,17 +48,17 @@ void DrawBoard::draw(RenderTexture &textureForWindow, int heightOfTheScrean, int
 		textureForWindow.draw(allotmentSprite);
 	}
 
-	shared_ptr<SinglyNode> node = headForFreeCell;
+	shared_ptr<SinglyNode<Cell> > node = headForFreeCell;
 	for (int i = 0; i < lengthForFreeCell; ++i)
 	{
-		freeCellSprite.setPosition(node->i * sizeOfCell + offset, node->j * sizeOfCell + offset);
+		freeCellSprite.setPosition(node->data.position.y * sizeOfCell + offset, node->data.position.x * sizeOfCell + offset);
 		textureForWindow.draw(freeCellSprite);
 		node = node->next;
 	}
 	node = headForEnemy;
 	for (int i = 0; i < lengthForEnemy; ++i)
 	{
-		enemySprite.setPosition(node->i * sizeOfCell + offset, node->j * sizeOfCell + offset);
+		enemySprite.setPosition(node->data.position.y * sizeOfCell + offset, node->data.position.x * sizeOfCell + offset);
 		textureForWindow.draw(enemySprite);
 		node = node->next;
 	}

@@ -20,8 +20,8 @@ private:
 	bool keyIsPressed;
 	bool figureIsAllotment;
 
-	SinglyLinked freeCell;
-	SinglyLinked enemy;
+	SinglyLinked<Cell> freeCell;
+	SinglyLinked<Cell> enemy;
 
 	
 	Cell *getCell(int i, int j);

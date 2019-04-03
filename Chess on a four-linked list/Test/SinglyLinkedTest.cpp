@@ -5,12 +5,12 @@
 TEST(WorkWithElements, PushBackElements)
 {
 	//arrange
-	SinglyLinked list;
+	SinglyLinked<int> list;
 
 	for (int i = 0; i < 100; ++i)
 	{
 		//action
-		list.pushBack(i, i);
+		list.pushBack(i);
 
 		//assert
 		EXPECT_EQ(i + 1, list.getSize());
@@ -21,12 +21,12 @@ TEST(WorkWithElements, PushBackElements)
 TEST(WorkWithElements, PopFrontElements)
 {
 	//arrange
-	SinglyLinked list;
+	SinglyLinked<int> list;
 
 	//action
 	for (int i = 0; i < 100; ++i)
 	{
-		list.pushBack(i, i);
+		list.pushBack(i);
 	}
 
 	for (int i = 100 - 1; i >= 0; --i)
@@ -49,14 +49,14 @@ TEST(WorkWithElements, PopFrontElements)
 TEST(WorkWithElements, clearList)
 {
 	//arrange
-	SinglyLinked list;
+	SinglyLinked<int> list;
 
 	for (int j = 0; j < 10; ++j)
 	{
 		//action
 		for (int i = 0; i < j; ++i)
 		{
-			list.pushBack(i, i);
+			list.pushBack(i);
 		}
 		
 		//assert
@@ -74,21 +74,20 @@ TEST(WorkWithElements, clearList)
 TEST(WorkWithElements, correctElement)
 {
 	//arrange
-	SinglyLinked list;
+	SinglyLinked<int> list;
 
 	//action
 	for (int i = 0; i < 100; ++i)
 	{
-		list.pushBack(i, i);
+		list.pushBack(i);
 	}
 
 	//arrange
-	shared_ptr<SinglyNode> node = list.getHead();
+	shared_ptr<SinglyNode<int> > node = list.getHead();
 
 	//assert
 	for (int i = 0; i < 100; ++i, node = node->next)
 	{
-		EXPECT_EQ(i, node->i);
-		EXPECT_EQ(i, node->j);
+		EXPECT_EQ(i, node->data);
 	}
 }
