@@ -32,7 +32,7 @@ void DrawBoard::draw(RenderTexture &textureForWindow, int heightOfTheScrean, int
 		{
 			if (cell->figure != 0)
 			{
-				figureSprite.setPosition(j * sizeOfCell + offset, i * sizeOfCell + offset);
+				figureSprite.setPosition(float(j * sizeOfCell + offset), float(i * sizeOfCell + offset));
 				figureSprite.setTextureRect(IntRect((cell->figure - 1) * sizeOfCell, (2 - cell->color) * sizeOfCell, sizeOfCell, sizeOfCell));
 				textureForWindow.draw(figureSprite);
 			}
@@ -44,21 +44,21 @@ void DrawBoard::draw(RenderTexture &textureForWindow, int heightOfTheScrean, int
 
 	if (allotment.x != -1)
 	{
-		allotmentSprite.setPosition(allotment.x * sizeOfCell + offset, allotment.y * sizeOfCell + offset);
+		allotmentSprite.setPosition(float(allotment.x * sizeOfCell + offset), float(allotment.y * sizeOfCell + offset));
 		textureForWindow.draw(allotmentSprite);
 	}
 
 	shared_ptr<SinglyNode<Cell> > node = headForFreeCell;
 	for (int i = 0; i < lengthForFreeCell; ++i)
 	{
-		freeCellSprite.setPosition(node->data.position.y * sizeOfCell + offset, node->data.position.x * sizeOfCell + offset);
+		freeCellSprite.setPosition(float(node->data.position.y * sizeOfCell + offset), float(node->data.position.x * sizeOfCell + offset));
 		textureForWindow.draw(freeCellSprite);
 		node = node->next;
 	}
 	node = headForEnemy;
 	for (int i = 0; i < lengthForEnemy; ++i)
 	{
-		enemySprite.setPosition(node->data.position.y * sizeOfCell + offset, node->data.position.x * sizeOfCell + offset);
+		enemySprite.setPosition(float(node->data.position.y * sizeOfCell + offset), float(node->data.position.x * sizeOfCell + offset));
 		textureForWindow.draw(enemySprite);
 		node = node->next;
 	}
@@ -75,8 +75,8 @@ void DrawBoard::draw(RenderTexture &textureForWindow, int heightOfTheScrean, int
 		textureForWindow.draw(tempSprite);
 
 		changeSprite.setTextureRect(IntRect(0, turn == ColorFigures::White ? 0 : sizeOfCell, sizeOfCell * 4, sizeOfCell));
-		changeSprite.setPosition(widthOfTheScrean / 2, heightOfTheScrean / 2);
-		changeSprite.setOrigin(changeTexture.getSize().x / 2, changeTexture.getSize().y / 2);
+		changeSprite.setPosition(float(widthOfTheScrean / 2), float(heightOfTheScrean / 2));
+		changeSprite.setOrigin(float(changeTexture.getSize().x / 2), float(changeTexture.getSize().y / 2));
 		textureForWindow.draw(changeSprite);
 	}
 }
