@@ -1,6 +1,5 @@
 SinglyNode - node in singly linked list
 SinglyLinked - singly linked list
-Button - taken from another project, not used in code
 Board - board 8 * 8 for chess, with figure
 FiguresMoving - checking and moving figures
 DrawBoard - graphic elements for drawing boards and figures
@@ -15,3 +14,6 @@ Your turn - your turn
 Opponent's turn - opponent's turn
 Waiting for a figure selection - waiting for user to select a figure depending on color
 Identifying possible moves - identifying possible moves
+union - variables in the structure of the Cell but rendered due to the features of the Enterprise Architect
+Vector2type - vector replaces the embedded vector in SFML
+Graphic - class responsible for graphics
