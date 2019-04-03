@@ -1,8 +1,9 @@
 #include "Board.h"
 
-Cell *Board::getCell(int i, int j)
+
+shared_ptr<Cell> Board::getCell(int i, int j)
 {
-	Cell *cell = head;
+	shared_ptr<Cell> cell = head;
 	for (int k = 0; k < j; ++k)
 	{
 		cell = cell->down;
@@ -13,6 +14,7 @@ Cell *Board::getCell(int i, int j)
 	}
 	return cell;
 }
+
 
 void Board::setInformation(int sizeOfBoardForClass, int offsetForClass, string addressOfBeginingPosition)
 {
@@ -27,10 +29,10 @@ void Board::setInformation(int sizeOfBoardForClass, int offsetForClass, string a
 
 	ifstream fileIn(addressOfBeginingPosition);
 	int figure, color;
-	Cell *cell = head;
+	shared_ptr<Cell> cell = head;
 	for (int i = 0; i < sizeOfBoard; ++i)
 	{
-		Cell *temp = new Cell();
+		shared_ptr<Cell> temp = make_shared<Cell>();
 		fileIn >> figure >> color;
 		temp->setInformation(figure, color, 0, i);
 
@@ -47,8 +49,8 @@ void Board::setInformation(int sizeOfBoardForClass, int offsetForClass, string a
 		}
 	}
 	
-	Cell *beginOfLine = head;
-	Cell *cellUp = head->right;
+	shared_ptr<Cell> beginOfLine = head;
+	shared_ptr<Cell> cellUp = head->right;
 	for (int i = 1; i < sizeOfBoard; ++i)
 	{
 		cellUp = beginOfLine->right;
@@ -56,7 +58,7 @@ void Board::setInformation(int sizeOfBoardForClass, int offsetForClass, string a
 
 		for (int j = 0; j < sizeOfBoard; ++j)
 		{
-			Cell *temp = new Cell();
+			shared_ptr<Cell> temp = make_shared<Cell>();
 
 			fileIn >> figure >> color;
 			temp->setInformation(figure, color, i, j);
@@ -93,7 +95,7 @@ void Board::work(Vector2i mousePosition, bool isPressed, int sizeOfCell)
 				j = (mousePosition.y - offset) / sizeOfCell;
 			if (i >= 0 && i < sizeOfBoard && j >= 0 && j < sizeOfBoard && mousePosition.x > offset && mousePosition.y > offset)
 			{
-				Cell *cell = getCell(i, j);
+				shared_ptr<Cell> cell = getCell(i, j);
 
 				if (cell->figure != 0 && cell->color == turn)
 				{
@@ -143,8 +145,8 @@ void Board::work(Vector2i mousePosition, bool isPressed, int sizeOfCell)
 
 				if (check)
 				{
-					Cell *first = getCell(allotment.x, allotment.y);
-					Cell *second = getCell(i, j);
+					shared_ptr<Cell> first = getCell(allotment.x, allotment.y);
+					shared_ptr<Cell> second = getCell(i, j);
 					if (first->figure == Figure::Pawn)
 					{
 						first->firstUnique = false;
@@ -195,10 +197,10 @@ void Board::work(Vector2i mousePosition, bool isPressed, int sizeOfCell)
 
 					if (moveThroughOne == turn)
 					{
-						Cell *beginOfLine = head;
+						shared_ptr<Cell> beginOfLine = head;
 						for (int i = 0; i < sizeOfBoard; ++i)
 						{
-							Cell *cell = beginOfLine;
+							shared_ptr<Cell> cell = beginOfLine;
 							for (int j = 0; j < sizeOfBoard; ++j)
 							{
 								if (cell->moveThroughOne)
@@ -220,7 +222,7 @@ void Board::work(Vector2i mousePosition, bool isPressed, int sizeOfCell)
 		{
 			enemy.clear();
 			freeCell.clear();
-			Cell *cell = getCell(allotment.x, allotment.y);
+			shared_ptr<Cell> cell = getCell(allotment.x, allotment.y);
 
 			figuresMoving.checkAllFunction(cell, freeCell, enemy);
 
@@ -232,10 +234,10 @@ void Board::work(Vector2i mousePosition, bool isPressed, int sizeOfCell)
 	{
 		if (isPressed && mousePosition.x - offset >= 2 * sizeOfCell && mousePosition.x - offset < 6 * sizeOfCell && mousePosition.y - offset >= 3 * sizeOfCell && mousePosition.y - offset < 4 * sizeOfCell)
 		{
-			Cell *beginOfLine = head;
+			shared_ptr<Cell> beginOfLine = head;
 			for (int i = 0; i < sizeOfBoard; ++i)
 			{
-				Cell *cell = beginOfLine;
+				shared_ptr<Cell> cell = beginOfLine;
 				for (int j = 0; j < sizeOfBoard; ++j)
 				{
 					if (cell->figure == Figure::Pawn && (cell->position.x == sizeOfBoard - 1 || cell->position.x == 0))

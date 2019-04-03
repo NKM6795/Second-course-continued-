@@ -5,8 +5,8 @@
 TEST(CellTest, links)
 {
 	//arrange
-	Cell *first = new Cell;
-	Cell *second = new Cell;
+	shared_ptr<Cell> first = make_shared<Cell>();
+	shared_ptr<Cell> second = make_shared<Cell>();
 
 	//action
 	first->up = second;
@@ -39,7 +39,7 @@ TEST(CellTest, links)
 TEST(CellTest, data)
 {
 	//arrange
-	Cell *first = new Cell;
+	shared_ptr<Cell> first = make_shared<Cell>();
 	
 	//action
 	first->setInformation(Figure::King, ColorFigures::White, 4, 5);

@@ -1,7 +1,13 @@
 #pragma once
 
 
+#include <string>
 #include "DrawBoard.h"
+
+
+using std::string;
+using std::getline;
+
 
 class Board
 {
@@ -13,7 +19,7 @@ private:
 	int sizeOfBoard;
 	Vector2i allotment;
 	Vector2i allotmentPast;
-	Cell *head = nullptr;
+	shared_ptr<Cell> head;
 
 	int moveThroughOne;
 	bool needDoing;
@@ -24,7 +30,7 @@ private:
 	SinglyLinked<Cell> enemy;
 
 	
-	Cell *getCell(int i, int j);
+	shared_ptr<Cell> getCell(int i, int j);
 
 public:
 	ColorFigures turn;

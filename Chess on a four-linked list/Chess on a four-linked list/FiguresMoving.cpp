@@ -1,6 +1,6 @@
 #include "FiguresMoving.h"
 
-void FiguresMoving::checkAllFunction(Cell *cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy)
+void FiguresMoving::checkAllFunction(shared_ptr<Cell> cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy)
 {
 	if (cell->figure == Figure::King)
 	{
@@ -29,7 +29,7 @@ void FiguresMoving::checkAllFunction(Cell *cell, SinglyLinked<Cell> &freeCell, S
 	}
 }
 
-void FiguresMoving::checkPosition(Cell *cell, Cell *beginCell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy)
+void FiguresMoving::checkPosition(shared_ptr<Cell> cell, shared_ptr<Cell> beginCell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy)
 {
 	if (cell != nullptr && cell->color == ColorFigures::NoColor)
 	{
@@ -41,9 +41,9 @@ void FiguresMoving::checkPosition(Cell *cell, Cell *beginCell, SinglyLinked<Cell
 	}
 }
 
-void FiguresMoving::checkPositionForKing(Cell *cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy)
+void FiguresMoving::checkPositionForKing(shared_ptr<Cell> cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy)
 {
-	Cell *temp = cell->right;
+	shared_ptr<Cell> temp = cell->right;
 	checkPosition(temp, cell, freeCell, enemy);
 	if (cell->right != nullptr)
 	{
@@ -84,9 +84,9 @@ void FiguresMoving::checkPositionForKing(Cell *cell, SinglyLinked<Cell> &freeCel
 	}
 }
 
-void FiguresMoving::checkVertAndHoriz(Cell *cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy)
+void FiguresMoving::checkVertAndHoriz(shared_ptr<Cell> cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy)
 {
-	Cell *temp = cell;
+	shared_ptr<Cell> temp = cell;
 	while (temp->right != nullptr && temp->right->color == ColorFigures::NoColor)
 	{
 		freeCell.pushBack(*(temp->right));
@@ -116,9 +116,9 @@ void FiguresMoving::checkVertAndHoriz(Cell *cell, SinglyLinked<Cell> &freeCell, 
 	checkPosition(temp->down, cell, freeCell, enemy);
 }
 
-void FiguresMoving::checkDiagonal(Cell *cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy)
+void FiguresMoving::checkDiagonal(shared_ptr<Cell> cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy)
 {
-	Cell *temp = cell;
+	shared_ptr<Cell> temp = cell;
 	while (temp->up != nullptr && temp->up->right != nullptr && temp->up->right->color == ColorFigures::NoColor)
 	{
 		freeCell.pushBack(*(temp->up->right));
@@ -160,9 +160,9 @@ void FiguresMoving::checkDiagonal(Cell *cell, SinglyLinked<Cell> &freeCell, Sing
 	}
 }
 
-void FiguresMoving::checkPositionForKnight(Cell *cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy)
+void FiguresMoving::checkPositionForKnight(shared_ptr<Cell> cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy)
 {
-	Cell *temp = cell;
+	shared_ptr<Cell> temp = cell;
 	if (cell->position.y > 1)
 	{
 		temp = cell->left->left;
@@ -190,9 +190,9 @@ void FiguresMoving::checkPositionForKnight(Cell *cell, SinglyLinked<Cell> &freeC
 	}
 }
 
-void FiguresMoving::checkPositionForPawn(Cell *cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy)
+void FiguresMoving::checkPositionForPawn(shared_ptr<Cell> cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy)
 {
-	Cell *temp = cell->color == ColorFigures::White ? cell->up : cell->down;
+	shared_ptr<Cell> temp = cell->color == ColorFigures::White ? cell->up : cell->down;
 	if (temp->color == ColorFigures::NoColor)
 	{
 		if (cell->firstUnique && (cell->color == ColorFigures::White ? temp->up : temp->down)->color == ColorFigures::NoColor)
@@ -220,7 +220,7 @@ void FiguresMoving::checkPositionForPawn(Cell *cell, SinglyLinked<Cell> &freeCel
 	}
 }
 
-void FiguresMoving::erase(Cell *cell)
+void FiguresMoving::erase(shared_ptr<Cell> cell)
 {
 	cell->firstUnique = false;
 	cell->figure = Figure::Nothing;
@@ -228,7 +228,7 @@ void FiguresMoving::erase(Cell *cell)
 	cell->moveThroughOne = false;
 }
 
-void FiguresMoving::goTo(Cell *firsCell, Cell *secondCell)
+void FiguresMoving::goTo(shared_ptr<Cell> firsCell, shared_ptr<Cell> secondCell)
 {
 	secondCell->firstUnique = firsCell->firstUnique;
 	secondCell->figure = firsCell->figure;

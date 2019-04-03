@@ -6,7 +6,7 @@
 #include "SinglyLinked.h"
 
 
-using namespace std;
+using std::ifstream;
 using namespace sf;
 
 
@@ -38,10 +38,10 @@ struct Cell
 	ColorFigures color;
 	Vector2i position;
 
-	Cell *up = nullptr;
-	Cell *down = nullptr;
-	Cell *left = nullptr;
-	Cell *right = nullptr;
+	shared_ptr<Cell> up,
+		down,
+		left,
+		right;
 
 	Cell();
 

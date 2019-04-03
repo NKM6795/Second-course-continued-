@@ -6,14 +6,14 @@
 class FiguresMoving
 {
 private:
-	void checkPosition(Cell *cell, Cell *beginCell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy);
-	void checkPositionForKing(Cell *cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy);
-	void checkVertAndHoriz(Cell *cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy);
-	void checkDiagonal(Cell *cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy);
-	void checkPositionForKnight(Cell *cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy);
-	void checkPositionForPawn(Cell *cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy);
+	void checkPosition(shared_ptr<Cell> cell, shared_ptr<Cell> beginCell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy);
+	void checkPositionForKing(shared_ptr<Cell> cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy);
+	void checkVertAndHoriz(shared_ptr<Cell> cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy);
+	void checkDiagonal(shared_ptr<Cell> cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy);
+	void checkPositionForKnight(shared_ptr<Cell> cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy);
+	void checkPositionForPawn(shared_ptr<Cell> cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy);
 public:
-	void erase(Cell *cell);
-	void goTo(Cell *firsCell, Cell *secondCell);
-	void checkAllFunction(Cell *cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy);
+	void erase(shared_ptr<Cell> cell);
+	void goTo(shared_ptr<Cell> firsCell, shared_ptr<Cell> secondCell);
+	void checkAllFunction(shared_ptr<Cell> cell, SinglyLinked<Cell> &freeCell, SinglyLinked<Cell> &enemy);
 };
