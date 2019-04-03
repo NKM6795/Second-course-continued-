@@ -1,4 +1,14 @@
-#include "BasicElement.h"
+#pragma once
+
+
+struct SinglyNode
+{
+	int i;
+	int j;
+	SinglyNode *next = nullptr;
+	SinglyNode(int iForStruct, int jForStruct);
+};
+
 
 class SinglyLinked
 {

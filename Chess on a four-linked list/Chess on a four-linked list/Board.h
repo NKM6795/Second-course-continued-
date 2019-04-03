@@ -1,3 +1,6 @@
+#pragma once
+
+
 #include "DrawBoard.h"
 
 class Board

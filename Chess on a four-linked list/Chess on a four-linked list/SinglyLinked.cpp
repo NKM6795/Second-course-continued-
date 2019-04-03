@@ -1,5 +1,14 @@
 #include "SinglyLinked.h"
 
+
+SinglyNode::SinglyNode(int iForStruct, int jForStruct)
+{
+	i = iForStruct;
+	j = jForStruct;
+}
+
+
+
 SinglyLinked::SinglyLinked()
 {
 	length = 0;
@@ -49,5 +58,3 @@ SinglyNode *SinglyLinked::getHead()
 {
 	return head;
 }
-
-

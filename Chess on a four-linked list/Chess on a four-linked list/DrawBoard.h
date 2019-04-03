@@ -1,3 +1,6 @@
+#pragma once
+
+
 #include "FiguresMoving.h"
 
 class DrawBoard

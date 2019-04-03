@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{9722783C-61FC-46B9-BD33-79FABEECC4EA}</ProjectGuid>
+    <ProjectGuid>{8A8A8833-D003-4400-885F-984F0EEF50B7}</ProjectGuid>
     <RootNamespace>Chessonafourlinkedlist</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -115,9 +115,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="BasicElement.cpp" />
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="DrawBoard.cpp" />
@@ -133,6 +130,9 @@
     <ClInclude Include="Edition function.h" />
     <ClInclude Include="FiguresMoving.h" />
     <ClInclude Include="SinglyLinked.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,8 +1,14 @@
+#pragma once
+
+
 #include <SFML/Graphics.hpp>
 #include <fstream>
+#include "SinglyLinked.h"
+
 
 using namespace std;
 using namespace sf;
+
 
 enum Figure
 {
@@ -14,6 +20,7 @@ enum Figure
 	Knight,
 	Pawn
 };
+
 
 enum ColorFigures
 {
@@ -41,10 +48,4 @@ struct Cell
 	void setInformation(int figureForStruct, int colorForStruct, int i, int j);
 };
 
-struct SinglyNode
-{
-	int i;
-	int j;
-	SinglyNode *next = nullptr;
-	SinglyNode(int iForStruct, int jForStruct);
-};
+

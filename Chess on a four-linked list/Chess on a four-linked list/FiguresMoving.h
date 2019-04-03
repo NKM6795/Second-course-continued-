@@ -1,4 +1,7 @@
-#include "SinglyLinked.h"
+#pragma once
+
+
+#include "BasicElement.h"
 
 class FiguresMoving
 {
