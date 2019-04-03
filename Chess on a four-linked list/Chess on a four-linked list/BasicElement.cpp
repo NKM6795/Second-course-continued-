@@ -9,10 +9,10 @@ Cell::Cell()
 }
 
 
-void Cell::setInformation(int figureForStruct, int colorForStruct, int i, int j)
+void Cell::setInformation(Figure figure, ColorFigures color, int i, int j)
 {
-	figure = (Figure)figureForStruct;
-	color = (ColorFigures)colorForStruct;
+	this->figure = figure;
+	this->color = color;
 
 	if (figure == Figure::Pawn || figure == Figure::King || figure == Figure::Rook)
 	{
@@ -22,3 +22,11 @@ void Cell::setInformation(int figureForStruct, int colorForStruct, int i, int j)
 	position = { i, j };
 }
 
+
+void Cell::setInformation(int figureId, int colorId, int i, int j)
+{
+	this->figureId = figureId;
+	this->colorId = colorId;
+
+	setInformation(figure, color, i, j);
+}

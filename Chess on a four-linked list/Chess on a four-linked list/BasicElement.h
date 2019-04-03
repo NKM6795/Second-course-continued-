@@ -34,8 +34,18 @@ struct Cell
 {
 	bool moveThroughOne;
 	bool firstUnique;
-	Figure figure;
-	ColorFigures color;
+	union
+	{
+		Figure figure;
+		int figureId;
+	};
+
+	union
+	{
+		ColorFigures color;
+		int colorId;
+	};
+
 	Vector2i position;
 
 	shared_ptr<Cell> up,
@@ -45,7 +55,8 @@ struct Cell
 
 	Cell();
 
-	void setInformation(int figureForStruct, int colorForStruct, int i, int j);
+	void setInformation(Figure figure, ColorFigures color, int i, int j);
+	void setInformation(int figureId, int colorId, int i, int j);
 };
 
 
