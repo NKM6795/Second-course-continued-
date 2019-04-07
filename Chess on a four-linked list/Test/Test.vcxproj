@@ -34,11 +34,16 @@
   <PropertyGroup Label="UserMacros" />
   <ItemGroup>
     <ClInclude Include="..\Chess on a four-linked list\BasicElement.h" />
+    <ClInclude Include="..\Chess on a four-linked list\Board.h" />
+    <ClInclude Include="..\Chess on a four-linked list\FiguresMoving.h" />
     <ClInclude Include="..\Chess on a four-linked list\SinglyLinked.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Chess on a four-linked list\BasicElement.cpp" />
+    <ClCompile Include="..\Chess on a four-linked list\Board.cpp" />
+    <ClCompile Include="..\Chess on a four-linked list\FiguresMoving.cpp" />
+    <ClCompile Include="BoardTest.cpp" />
     <ClCompile Include="CellTest.cpp" />
     <ClCompile Include="SinglyLinkedTest.cpp" />
     <ClCompile Include="pch.cpp">
@@ -55,6 +60,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Chess on a four-linked list\Date\Date for board.dat" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemDefinitionGroup />

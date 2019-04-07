@@ -1,33 +1,11 @@
 #include "Board.h"
 
 
-shared_ptr<Cell> Board::getCell(int i, int j)
+Board::Board(int sizeOfBoard, int offset, string addressOfBeginingPosition) : sizeOfBoard(sizeOfBoard), offset(offset)
 {
-	shared_ptr<Cell> cell = head;
-	for (int k = 0; k < j; ++k)
-	{
-		cell = cell->down;
-	}
-	for (int k = 0; k < i; ++k)
-	{
-		cell = cell->right;
-	}
-	return cell;
-}
-
-
-void Board::setInformation(int sizeOfBoardForClass, int offsetForClass, string addressOfBeginingPosition)
-{
-	change = false;
-
 	turn = ColorFigures::White;
 	moveThroughOne = -1;
-	keyIsPressed = false;
-	needDoing = false;
-	figureIsAllotment = false;
 	allotment = { -1, -1 };
-	sizeOfBoard = sizeOfBoardForClass;
-	offset = offsetForClass;
 
 	ifstream fileIn(addressOfBeginingPosition);
 	int figure, color;
@@ -85,173 +63,136 @@ void Board::setInformation(int sizeOfBoardForClass, int offsetForClass, string a
 }
 
 
-void Board::work(Vector2int mousePosition, bool isPressed, int sizeOfCell)
+bool Board::moveCheck(int i, int j)
 {
-	if (!change)
+	bool check = false;
+
+	shared_ptr<SinglyNode<Cell> > node = getFreeCellList().getHead();
+	for (int k = 0; k < getFreeCellList().getSize(); ++k)
 	{
-		if (isPressed)
+		if (node->data.position.y == i && node->data.position.x == j)
 		{
-			keyIsPressed = true;
-			int i = (mousePosition.x - offset) / sizeOfCell,
-				j = (mousePosition.y - offset) / sizeOfCell;
-			if (i >= 0 && i < sizeOfBoard && j >= 0 && j < sizeOfBoard && mousePosition.x > offset && mousePosition.y > offset)
+			check = true;
+		}
+		node = node->next;
+	}
+	node = getEnemyList().getHead();
+	for (int k = 0; k < getEnemyList().getSize(); ++k)
+	{
+		if (node->data.position.y == i && node->data.position.x == j)
+		{
+			check = true;
+		}
+		node = node->next;
+	}
+	return check;
+}
+
+bool Board::moveCheck(int i, int j, int beginI, int beginJ)
+{
+	newMoves(beginI, beginJ);
+
+	return moveCheck(i, j);
+}
+
+
+void Board::makeAMove(int i, int j)
+{
+	shared_ptr<Cell> first = getCell(allotment.x, allotment.y);
+	shared_ptr<Cell> second = getCell(i, j);
+	if (first->figure == Figure::Pawn)
+	{
+		first->firstUnique = false;
+		if (allotment.y - j == 2 || allotment.y - j == -2)
+		{
+			first->moveThroughOne = true;
+			moveThroughOne = turn;
+		}
+		if ((allotment.x - i == 1 || allotment.x - i == -1) && (allotment.y - j == 1 || allotment.y - j == -1) && second->color == ColorFigures::NoColor)
+		{
+			if ((allotment.x - i == 1 && allotment.y - j == 1) || (allotment.x - i == 1 && allotment.y - j == -1))
 			{
-				shared_ptr<Cell> cell = getCell(i, j);
-
-				if (cell->figure != 0 && cell->color == turn)
-				{
-					allotment = { i, j };
-					if (allotment != allotmentPast)
-					{
-						figureIsAllotment = true;
-						allotmentPast = allotment;
-					}
-				}
+				FiguresMoving::erase(first->left);
 			}
-		}
-
-		if (!isPressed && keyIsPressed)
-		{
-			needDoing = true;
-			keyIsPressed = false;
-		}
-
-		if (needDoing && allotment.x != -1)
-		{
-			needDoing = false;
-			int i = (mousePosition.x - offset) / sizeOfCell,
-				j = (mousePosition.y - offset) / sizeOfCell;
-			if (i >= 0 && i < sizeOfBoard && j >= 0 && j < sizeOfBoard && mousePosition.x > offset && mousePosition.y > offset)
+			else if ((allotment.x - i == -1 && allotment.y - j == 1) || (allotment.x - i == -1 && allotment.y - j == -1))
 			{
-				bool check = false;
-
-				shared_ptr<SinglyNode<Cell> > node = freeCell.getHead();
-				for (int k = 0; k < freeCell.getSize(); ++k)
-				{
-					if (node->data.position.y == i && node->data.position.x == j)
-					{
-						check = true;
-					}
-					node = node->next;
-				}
-				node = enemy.getHead();
-				for (int k = 0; k < enemy.getSize(); ++k)
-				{
-					if (node->data.position.y == i && node->data.position.x == j)
-					{
-						check = true;
-					}
-					node = node->next;
-				}
-
-				if (check)
-				{
-					shared_ptr<Cell> first = getCell(allotment.x, allotment.y);
-					shared_ptr<Cell> second = getCell(i, j);
-					if (first->figure == Figure::Pawn)
-					{
-						first->firstUnique = false;
-						if (allotment.y - j == 2 || allotment.y - j == -2)
-						{
-							first->moveThroughOne = true;
-							moveThroughOne = turn;
-						}
-						if ((allotment.x - i == 1 || allotment.x - i == -1) && (allotment.y - j == 1 || allotment.y - j == -1) && second->color == ColorFigures::NoColor)
-						{
-							if ((allotment.x - i == 1 && allotment.y - j == 1) || (allotment.x - i == 1 && allotment.y - j == -1))
-							{
-								FiguresMoving::erase(first->left);
-							}
-							else if ((allotment.x - i == -1 && allotment.y - j == 1) || (allotment.x - i == -1 && allotment.y - j == -1))
-							{
-								FiguresMoving::erase(first->right);
-							}
-						}
-						if (second->position.x == sizeOfBoard - 1 || second->position.x == 0)
-						{
-							change = true;
-						}
-					}
-					else if (first->figure == Figure::King)
-					{
-						first->firstUnique = false;
-						if (allotment.x - i == -2)
-						{
-							FiguresMoving::goTo(first->right->right->right, first->right);
-						}
-						if (allotment.x - i == 2)
-						{
-							FiguresMoving::goTo(first->left->left->left->left, first->left);
-						}
-					}
-					else if (first->figure == Figure::Rook)
-					{
-						first->firstUnique = false;
-					}
-
-					FiguresMoving::goTo(first, second);
-					allotment = { -1, -1 };
-					enemy.clear();
-					freeCell.clear();
-
-					turn = (ColorFigures)(2 - (turn + 1) % 2);
-
-					if (moveThroughOne == turn)
-					{
-						shared_ptr<Cell> beginOfLine = head;
-						for (int i = 0; i < sizeOfBoard; ++i)
-						{
-							shared_ptr<Cell> cell = beginOfLine;
-							for (int j = 0; j < sizeOfBoard; ++j)
-							{
-								if (cell->moveThroughOne)
-								{
-									cell->moveThroughOne = false;
-								}
-
-								cell = cell->right;
-							}
-							beginOfLine = beginOfLine->down;
-						}
-						moveThroughOne = -1;
-					}
-				}
+				FiguresMoving::erase(first->right);
 			}
-		}
-
-		if (figureIsAllotment)
-		{
-			enemy.clear();
-			freeCell.clear();
-			shared_ptr<Cell> cell = getCell(allotment.x, allotment.y);
-
-			FiguresMoving::checkAllFunction(cell, freeCell, enemy);
-
-			
-			figureIsAllotment = false;
 		}
 	}
-	else
+	else if (first->figure == Figure::King)
 	{
-		if (isPressed && mousePosition.x - offset >= 2 * sizeOfCell && mousePosition.x - offset < 6 * sizeOfCell && mousePosition.y - offset >= 3 * sizeOfCell && mousePosition.y - offset < 4 * sizeOfCell)
+		first->firstUnique = false;
+		if (allotment.x - i == -2)
 		{
-			shared_ptr<Cell> beginOfLine = head;
-			for (int i = 0; i < sizeOfBoard; ++i)
-			{
-				shared_ptr<Cell> cell = beginOfLine;
-				for (int j = 0; j < sizeOfBoard; ++j)
-				{
-					if (cell->figure == Figure::Pawn && (cell->position.x == sizeOfBoard - 1 || cell->position.x == 0))
-					{
-						cell->figure = (Figure)((mousePosition.x - offset) / sizeOfCell);
-					}
-					cell = cell->right;
-				}
-				beginOfLine = beginOfLine->down;
-			}
-			change = false;
+			FiguresMoving::goTo(first->right->right->right, first->right);
+		}
+		if (allotment.x - i == 2)
+		{
+			FiguresMoving::goTo(first->left->left->left->left, first->left);
 		}
 	}
+	else if (first->figure == Figure::Rook)
+	{
+		first->firstUnique = false;
+	}
+
+	FiguresMoving::goTo(first, second);
+	allotment = { -1, -1 };
+	enemy.clear();
+	freeCell.clear();
+
+	turn = (ColorFigures)(2 - (turn + 1) % 2);
+
+	if (moveThroughOne == turn)
+	{
+		shared_ptr<Cell> beginOfLine = head;
+		for (int i = 0; i < sizeOfBoard; ++i)
+		{
+			shared_ptr<Cell> cell = beginOfLine;
+			for (int j = 0; j < sizeOfBoard; ++j)
+			{
+				if (cell->moveThroughOne)
+				{
+					cell->moveThroughOne = false;
+				}
+
+				cell = cell->right;
+			}
+			beginOfLine = beginOfLine->down;
+		}
+		moveThroughOne = -1;
+	}
+}
+
+
+void Board::newMoves()
+{
+	newMoves(allotment.x, allotment.y);
+}
+
+void Board::newMoves(int i, int j)
+{
+	enemy.clear();
+	freeCell.clear();
+	shared_ptr<Cell> cell = getCell(i, j);
+
+	FiguresMoving::checkAllFunction(cell, freeCell, enemy);
+}
+
+
+shared_ptr<Cell> Board::getCell(int i, int j)
+{
+	shared_ptr<Cell> cell = head;
+	for (int k = 0; k < j; ++k)
+	{
+		cell = cell->down;
+	}
+	for (int k = 0; k < i; ++k)
+	{
+		cell = cell->right;
+	}
+	return cell;
 }
 
 
@@ -271,6 +212,11 @@ shared_ptr<Cell> Board::getHead()
 }
 
 Vector2int Board::getAllotment()
+{
+	return allotment;
+}
+
+Vector2int &Board::accessToAllotment()
 {
 	return allotment;
 }

@@ -23,10 +23,11 @@ void game()
 	long timerForWorkProgram = 0,
 		timerForFPS = 0;
 
-	Board board;
-	board.setInformation(8, 25, string("Date/Date for board.dat"));
+	Board board(8, 25, string("Date/Date for board.dat"));
 
 	graphic.setInformation(board);
+
+	WorkWithBoard workWithBoard;
 
 	while (graphic.isOpen())
 	{
@@ -44,7 +45,7 @@ void game()
 				}
 			}
 
-			board.work(mousePosition, Mouse::isButtonPressed(Mouse::Left), sizeOfCell);
+			workWithBoard.work(board, mousePosition, Mouse::isButtonPressed(Mouse::Left), sizeOfCell);
 
 			if (graphic.getTimeAsMicroseconds() - timerForFPS >= timeForFPS)
 			{

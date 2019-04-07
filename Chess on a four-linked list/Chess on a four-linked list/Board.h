@@ -12,8 +12,6 @@ using std::getline;
 class Board
 {
 private:
-	bool change;
-
 	int offset;
 	int sizeOfBoard;
 	Vector2int allotment;
@@ -21,27 +19,30 @@ private:
 	shared_ptr<Cell> head;
 
 	int moveThroughOne;
-	bool needDoing;
-	bool keyIsPressed;
-	bool figureIsAllotment;
 
 	SinglyLinked<Cell> freeCell;
 	SinglyLinked<Cell> enemy;
 
-	
-	shared_ptr<Cell> getCell(int i, int j);
-
 public:
 	ColorFigures turn;
 
-	void setInformation(int sizeOfBoardForClass, int offsetForClass, string addressOfBeginingPosition);
+	Board(int sizeOfBoard, int offset, string addressOfBeginingPosition);
 
-	void work(Vector2int mousePosition, bool isPressed, int sizeOfCell);
+	bool moveCheck(int i, int j);
+	bool moveCheck(int i, int j, int beginI, int beginJ);
+
+	void makeAMove(int i, int j);
+
+	void newMoves();
+	void newMoves(int i, int j);
+
+	shared_ptr<Cell> getCell(int i, int j);
 
 	int getSizeOfBoard();
 	int getOffset();
 	shared_ptr<Cell> getHead();
 	Vector2int getAllotment();
+	Vector2int &accessToAllotment();
 	SinglyLinked<Cell> getFreeCellList();
 	SinglyLinked<Cell> getEnemyList();
 };

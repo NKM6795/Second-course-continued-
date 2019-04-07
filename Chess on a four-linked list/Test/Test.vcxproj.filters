@@ -8,6 +8,13 @@
       <Filter>Data</Filter>
     </ClCompile>
     <ClCompile Include="Vector2typeTest.cpp" />
+    <ClCompile Include="BoardTest.cpp" />
+    <ClCompile Include="..\Chess on a four-linked list\Board.cpp">
+      <Filter>Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Chess on a four-linked list\FiguresMoving.cpp">
+      <Filter>Data</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -17,10 +24,22 @@
     <ClInclude Include="..\Chess on a four-linked list\BasicElement.h">
       <Filter>Data</Filter>
     </ClInclude>
+    <ClInclude Include="..\Chess on a four-linked list\Board.h">
+      <Filter>Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Chess on a four-linked list\FiguresMoving.h">
+      <Filter>Data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Data">
       <UniqueIdentifier>{1b28e6f1-6f4a-4f17-95d3-845652816968}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="..\Chess on a four-linked list\Date\Date for board.dat">
+      <Filter>Data</Filter>
+    </None>
   </ItemGroup>
 </Project>
