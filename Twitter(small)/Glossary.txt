@@ -1,10 +1,10 @@
-User - user
+Tweet - post with some information
+User
 Internet user - user who is not logged in
 Login -	log in or sign up
-Post tweets - post tweets
-Search on words - search on words
-Search for people - search for people
-Read Tweets - read Tweets
+Post tweets
+Search - search by word, user or tag
+Read Tweets
 View trending topics - view trending topics
 Logout - logout
 Followers - people who follow you
@@ -20,7 +20,6 @@ Page with user - someone's profile(not my)
 Page with tweet - read tweet
 Write a tweet - write a tweet, then post it
 Chat - chat with other user
-Tweet - post with some information
 Comment - comment on tweet or other comment
 List - user group
 Moment - tweet group
