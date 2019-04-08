@@ -5,14 +5,18 @@ Login -	log in or sign up
 Post tweets
 Search - search by word, user or tag
 Read Tweets
-View trending topics - view trending topics
-Logout - logout
+View trending topics - popular tweets
+Logout
 Followers - people who follow you
 Following - people you follow
-Twitter members - twitter members
+Twitter member
 Home - home page
 Start page - start page when entering twitter
 Information about Twitter - information about Twitter which depends on the button you clicked
+Compose new Tweet - page for writing tweet
+
+
+
 Common - there is access to any of these activities
 Find - search on words or search for people
 Profile - my profile
