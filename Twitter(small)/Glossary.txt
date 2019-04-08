@@ -14,7 +14,6 @@ Home - home page
 Start page - start page when entering twitter
 Information about Twitter - information about Twitter which depends on the button you clicked
 Compose new Tweet - page for writing tweet
-Chat - chat with other user
 Comment - comment on tweet or other comment
 List - user group
 Moment - tweet group
