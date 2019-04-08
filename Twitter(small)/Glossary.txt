@@ -2,10 +2,10 @@ Tweet - post with some information
 User
 Internet user - user who is not logged in
 Login -	log in or sign up
-Post tweets
+Post tweet
 Search - search by word, user or tag
-Read Tweets
-View trending topics - popular tweets
+Read Tweet
+View trending topic - popular tweets
 Logout
 Followers - people who follow you
 Following - people you follow
