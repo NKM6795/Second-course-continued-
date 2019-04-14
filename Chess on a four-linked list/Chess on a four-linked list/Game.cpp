@@ -3,31 +3,33 @@
 
 void game()
 {
-	int screanWidth, screanHeight, sizeOfCell, timeForWorkProgram, timeForFPS;
+	int screenWidth, screenHeight, sizeOfCell, timeForWorkProgram, timeForFPS, offset, sizeOfBoard;
 	
-	ifstream fileIn("Date/Date for game.dat");
+	ifstream fileIn("Data/Data for game.dat");
 
-	fileIn >> screanWidth >> screanHeight >> sizeOfCell >> timeForWorkProgram >> timeForFPS;
+	fileIn >> screenWidth >> screenHeight >> sizeOfCell >> timeForWorkProgram >> timeForFPS >> sizeOfBoard >> offset;
 
 	string addressOfbackground;
 	getline(fileIn, addressOfbackground);
 	getline(fileIn, addressOfbackground);
 
 
-	Graphic graphic(screanWidth, screanHeight);
+	Graphic graphic(screenWidth, screenHeight);
 
-	graphic.setInformation(screanWidth / 2, screanHeight / 2, screanWidth, screanHeight, addressOfbackground);
+	graphic.setInformation(screenWidth / 2, screenHeight / 2, screenWidth, screenHeight, addressOfbackground);
+
 
 	Vector2int mousePosition;
 
 	long timerForWorkProgram = 0,
 		timerForFPS = 0;
 
-	Board board(8, 25, string("Date/Date for board.dat"));
+	Board board(sizeOfBoard, string("Data/Data for board.dat"));
 
-	graphic.setInformation(board);
+	graphic.setInformation(board, offset);
 
-	WorkWithBoard workWithBoard;
+	WorkWithBoard workWithBoard(offset);
+
 
 	while (graphic.isOpen())
 	{

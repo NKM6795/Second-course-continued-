@@ -15,9 +15,9 @@ void Graphic::setInformation(int xCoordinate, int yCoordinate, int width, int he
 	backgroundSprite->setPosition(float(xCoordinate), float(yCoordinate));
 }
 
-void Graphic::setInformation(Board &board)
+void Graphic::setInformation(Board &board, int offset)
 {
-	drawBoard.setInformation(board.getSizeOfBoard(), board.getOffset());
+	drawBoard.setInformation(board.getSizeOfBoard(), offset);
 }
 
 
@@ -45,7 +45,7 @@ void Graphic::drawPrivate()
 
 void Graphic::drawPrivate(Board &board, int sizeOfCell)
 {
-	drawBoard.draw(*textureForWindow, screanHeight, screanWidth, sizeOfCell, board.getHead(), board.getAllotment(), board.getFreeCellList().getHead(), board.getFreeCellList().getSize(), board.getEnemyList().getHead(), board.getEnemyList().getSize(), board.turn);
+	drawBoard.draw(*textureForWindow, screenHeight, screenWidth, sizeOfCell, board.getHead(), board.getAllotment(), board.getFreeCellList().getHead(), board.getFreeCellList().getSize(), board.getEnemyList().getHead(), board.getEnemyList().getSize(), board.turn);
 }
 
 

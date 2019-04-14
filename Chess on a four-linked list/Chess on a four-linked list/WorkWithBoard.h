@@ -14,9 +14,10 @@ class WorkWithBoard
 	bool figureIsAllotment;
 	Vector2int allotmentPast;
 
+	int offset;
 
 public:
-	WorkWithBoard();
+	WorkWithBoard(int offset);
 
 	void work(Board &board, Vector2int mousePosition, bool isPressed, int sizeOfCell);
 

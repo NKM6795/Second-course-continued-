@@ -1,7 +1,7 @@
 #include "Board.h"
 
 
-Board::Board(int sizeOfBoard, int offset, string addressOfBeginingPosition) : sizeOfBoard(sizeOfBoard), offset(offset)
+Board::Board(int sizeOfBoard, string addressOfBeginingPosition) : sizeOfBoard(sizeOfBoard)
 {
 	turn = ColorFigures::White;
 	moveThroughOne = -1;
@@ -199,11 +199,6 @@ shared_ptr<Cell> Board::getCell(int i, int j)
 int Board::getSizeOfBoard()
 {
 	return sizeOfBoard;
-}
-
-int Board::getOffset()
-{
-	return offset;
 }
 
 shared_ptr<Cell> Board::getHead()

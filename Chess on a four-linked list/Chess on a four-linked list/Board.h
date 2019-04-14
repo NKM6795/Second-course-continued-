@@ -12,7 +12,6 @@ using std::getline;
 class Board
 {
 private:
-	int offset;
 	int sizeOfBoard;
 	Vector2int allotment;
 	Vector2int allotmentPast;
@@ -26,7 +25,7 @@ private:
 public:
 	ColorFigures turn;
 
-	Board(int sizeOfBoard, int offset, string addressOfBeginingPosition);
+	Board(int sizeOfBoard, string addressOfBeginingPosition);
 
 	bool moveCheck(int i, int j);
 	bool moveCheck(int i, int j, int beginI, int beginJ);
@@ -39,7 +38,6 @@ public:
 	shared_ptr<Cell> getCell(int i, int j);
 
 	int getSizeOfBoard();
-	int getOffset();
 	shared_ptr<Cell> getHead();
 	Vector2int getAllotment();
 	Vector2int &accessToAllotment();

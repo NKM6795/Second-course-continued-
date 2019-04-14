@@ -5,10 +5,10 @@
 TEST(BoardTest, correctData)
 {
 	//arrange
-	string fileName = "../Chess on a four-linked list/Date/Date for board.dat";
+	string fileName = "../Chess on a four-linked list/Data/Data for board.dat";
 
 	int sizeOfBoard = 8;
-	Board board(sizeOfBoard, 25, fileName);
+	Board board(sizeOfBoard, fileName);
 
 	ifstream fileIn(fileName);
 
@@ -32,10 +32,10 @@ TEST(BoardTest, correctData)
 TEST(BoardTest, erase)
 {
 	//arrange
-	string fileName = "../Chess on a four-linked list/Date/Date for board.dat";
+	string fileName = "../Chess on a four-linked list/Data/Data for board.dat";
 
 	int sizeOfBoard = 8;
-	Board board(sizeOfBoard, 25, fileName);
+	Board board(sizeOfBoard, fileName);
 
 	shared_ptr<Cell> check = make_shared<Cell>();
 
@@ -58,10 +58,10 @@ TEST(BoardTest, erase)
 TEST(BoardTest, newMoves)
 {
 	//arrange
-	string fileName = "../Chess on a four-linked list/Date/Date for board.dat";
+	string fileName = "../Chess on a four-linked list/Data/Data for board.dat";
 
 	int sizeOfBoard = 8;
-	Board board(sizeOfBoard, 25, fileName);
+	Board board(sizeOfBoard, fileName);
 
 	for (int i = 0; i < sizeOfBoard; ++i)
 	{
@@ -90,10 +90,10 @@ TEST(BoardTest, newMoves)
 TEST(BoardTest, moveCheck)
 {
 	//arrange
-	string fileName = "../Chess on a four-linked list/Date/Date for board.dat";
+	string fileName = "../Chess on a four-linked list/Data/Data for board.dat";
 
 	int sizeOfBoard = 8;
-	Board board(sizeOfBoard, 25, fileName);
+	Board board(sizeOfBoard, fileName);
 
 	shared_ptr<Cell> firstCell, secondCell;
 
@@ -108,10 +108,10 @@ TEST(BoardTest, moveCheck)
 TEST(BoardTest, makeAMove)
 {
 	//arrange
-	string fileName = "../Chess on a four-linked list/Date/Date for board.dat";
+	string fileName = "../Chess on a four-linked list/Data/Data for board.dat";
 
 	int sizeOfBoard = 8;
-	Board board(sizeOfBoard, 25, fileName);
+	Board board(sizeOfBoard, fileName);
 
 	shared_ptr<Cell> firstCell, secondCell;
 

@@ -33,7 +33,7 @@ private:
 public:
 	bool change;
 	
-	void setInformation(int sizeOfBoardForClass, int offsetForClass);
-	void draw(RenderTexture &textureForWindow, int heightOfTheScrean, int widthOfTheScrean, int sizeOfCell, shared_ptr<Cell> head, Vector2int allotment, shared_ptr<SinglyNode<Cell> > headForFreeCell, int lengthForFreeCell, shared_ptr<SinglyNode<Cell> > headForEnemy, int lengthForEnemy, int turn);
+	void setInformation(int sizeOfBoard, int offset);
+	void draw(RenderTexture &textureForWindow, int heightOfThescreen, int screenWidth, int sizeOfCell, shared_ptr<Cell> head, Vector2int allotment, shared_ptr<SinglyNode<Cell> > headForFreeCell, int lengthForFreeCell, shared_ptr<SinglyNode<Cell> > headForEnemy, int lengthForEnemy, int turn);
 
 };

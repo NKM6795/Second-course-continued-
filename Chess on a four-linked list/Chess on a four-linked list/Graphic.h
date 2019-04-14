@@ -9,8 +9,8 @@ class Graphic
 	Clock globalTimer;
 	Event event;
 
-	int screanWidth;
-	int screanHeight;
+	int screenWidth;
+	int screenHeight;
 	shared_ptr<RenderWindow> window;
 	shared_ptr<RenderTexture> textureForWindow;
 
@@ -28,19 +28,19 @@ class Graphic
 	void drawPrivate(Board &board, int sizeOfCell);
 
 public:
-	Graphic(int screanWidth, int screanHeight) : screanWidth(screanWidth), screanHeight(screanHeight)
+	Graphic(int screenWidth, int screenHeight) : screenWidth(screenWidth), screenHeight(screenHeight)
 	{
-		window = make_shared<RenderWindow>(VideoMode(screanWidth, screanHeight), "Chess", Style::None);
+		window = make_shared<RenderWindow>(VideoMode(screenWidth, screenHeight), "Chess", Style::None);
 
 		textureForWindow = make_shared<RenderTexture>();
-		textureForWindow->create(screanWidth, screanHeight);
+		textureForWindow->create(screenWidth, screenHeight);
 		textureForWindow->clear(Color(119, 107, 76));
 
 		needBackground = false;
 	}
 
 	void setInformation(int xCoordinate, int yCoordinate, int width, int height, string fileName);
-	void setInformation(Board &board);
+	void setInformation(Board &board, int offset);
 
 	void draw(Board &board, int sizeOfCell);
 
